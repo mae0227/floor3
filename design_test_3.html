@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<html>
+<head>
+
+  <title>changg</title>
+  <style>
+    #image-container {
+      display: inline-block;
+      position: relative;
+    }
+
+/* ここも部屋の数に応じて増やさなければいけない top: y, left: x*/
+        #overlay3111 {
+        display: inline-block;
+        position: absolute;
+        left: 184px;
+        top: 296px;
+        width: 7.875000%;
+        height: 4.619600%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3112 {
+        display: inline-block;
+        position: absolute;
+        left: 247px;
+        top: 345px;
+        width: 6.375000%;
+        height: 5.797100%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3120 {
+        display: inline-block;
+        position: absolute;
+        left: 245px;
+        top: 442px;
+        width: 8.375000%;
+        height: 7.699300%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3130 {
+        display: inline-block;
+        position: absolute;
+        left: 245px;
+        top: 527px;
+        width: 8.375000%;
+        height: 7.246400%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3140 {
+        display: inline-block;
+        position: absolute;
+        left: 225px;
+        top: 608px;
+        width: 8.250000%;
+        height: 6.974600%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3150 {
+        display: inline-block;
+        position: absolute;
+        left: 204px;
+        top: 685px;
+        width: 8.000000%;
+        height: 7.246400%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3164 {
+        display: inline-block;
+        position: absolute;
+        left: 134px;
+        top: 819px;
+        width: 11.500000%;
+        height: 7.608700%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3210 {
+        display: inline-block;
+        position: absolute;
+        left: 428px;
+        top: 330px;
+        width: 11.625000%;
+        height: 6.884100%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3220 {
+        display: inline-block;
+        position: absolute;
+        left: 469px;
+        top: 445px;
+        width: 8.625000%;
+        height: 7.246400%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3230 {
+        display: inline-block;
+        position: absolute;
+        left: 469px;
+        top: 527px;
+        width: 8.375000%;
+        height: 7.337000%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3240 {
+        display: inline-block;
+        position: absolute;
+        left: 448px;
+        top: 610px;
+        width: 8.500000%;
+        height: 6.884100%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3250 {
+        display: inline-block;
+        position: absolute;
+        left: 426px;
+        top: 686px;
+        width: 8.500000%;
+        height: 7.246400%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3311 {
+        display: inline-block;
+        position: absolute;
+        left: 632px;
+        top: 316px;
+        width: 13.500000%;
+        height: 6.974600%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3320 {
+        display: inline-block;
+        position: absolute;
+        left: 693px;
+        top: 448px;
+        width: 7.875000%;
+        height: 7.155800%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3330 {
+        display: inline-block;
+        position: absolute;
+        left: 689px;
+        top: 532px;
+        width: 8.250000%;
+        height: 6.793500%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3340 {
+        display: inline-block;
+        position: absolute;
+        left: 671px;
+        top: 608px;
+        width: 8.125000%;
+        height: 6.702900%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3350 {
+        display: inline-block;
+        position: absolute;
+        left: 648px;
+        top: 686px;
+        width: 8.250000%;
+        height: 7.337000%;
+        mix-blend-mode: multiply;
+        }
+        #overlay3364 {
+        display: inline-block;
+        position: absolute;
+        left: 580px;
+        top: 818px;
+        width: 11.125000%;
+        height: 7.608700%;
+        mix-blend-mode: multiply;
+        }
+
+
+
+    /*数十個のoverlayを作成する。もしかしたらoverlayの上限があるかもしれない
+        #overlayn {
+
+        }
+        */
+  </style>
+</head>
+<body>
+  <div id="image-container">
+    <img id="image" src="room.png">
+
+    div.txt
+    <div id="overlay3111"></div>
+    <div id="overlay3112"></div>
+    <div id="overlay3120"></div>
+    <div id="overlay3130"></div>
+    <div id="overlay3140"></div>
+    <div id="overlay3150"></div>
+    <div id="overlay3164"></div>
+    <div id="overlay3210"></div>
+    <div id="overlay3220"></div>
+    <div id="overlay3230"></div>
+    <div id="overlay3240"></div>
+    <div id="overlay3250"></div>
+    <div id="overlay3311"></div>
+    <div id="overlay3320"></div>
+    <div id="overlay3330"></div>
+    <div id="overlay3340"></div>
+    <div id="overlay3350"></div>
+    <div id="overlay3364"></div>
+  </div>
+
+
+  <script>
+    // 画像の一部の色を変える関数
+    // ここで階層データを作りたい ex 曜日[時限[教室番号]]　　ゆくゆくはExcelのデータから自動的にとりた
+    // CSVファイルを取得
+      let csv = new XMLHttpRequest();
+      
+      // CSVファイルへのパス
+      csv.open("GET", "3_room.csv", false);
+        
+      // csvファイル読み込み失敗時のエラー対応
+      try {
+        csv.send(null);
+      } catch (err) {
+        console.log(err);
+      }
+        
+      // 配列を定義
+      let csvArray = [];
+        
+      // 改行ごとに配列化
+      let lines = csv.responseText.split(/\r\n|\n/);
+        
+      // 1行ごとに処理
+      for (let i = 0; i < lines.length; ++i) {
+        let cells = lines[i].split(",");
+        if (cells.length != 1) {
+          csvArray.push(cells);
+        }
+      }
+      // コンソールに配列を出力
+    function changeColor() {
+      //ここも必要数に応じて増やさなければいけない
+      var overlay3111= document.getElementById("overlay3111");
+      var overlay3112= document.getElementById("overlay3112");
+      var overlay3120= document.getElementById("overlay3120");
+      var overlay3130= document.getElementById("overlay3130");
+      var overlay3140= document.getElementById("overlay3140");
+      var overlay3150= document.getElementById("overlay3150");
+      var overlay3164= document.getElementById("overlay3164");
+      var overlay3210= document.getElementById("overlay3210");
+      var overlay3220= document.getElementById("overlay3220");
+      var overlay3230= document.getElementById("overlay3230");
+      var overlay3240= document.getElementById("overlay3240");
+      var overlay3250= document.getElementById("overlay3250");
+      var overlay3311= document.getElementById("overlay3311");
+      var overlay3320= document.getElementById("overlay3320");
+      var overlay3330= document.getElementById("overlay3330");
+      var overlay3340= document.getElementById("overlay3340");
+      var overlay3350= document.getElementById("overlay3350");
+      var overlay3364= document.getElementById("overlay3364");
+      //
+      var currentTime = new Date().getHours();
+      var currentTime_M = new Date().getMinutes();
+      var currentDay = new Date().getDay();
+      var currentYear = new Date().getFullYear(); // 現在の時間を取
+      //ここから
+      // 配列を定義
+      // CSVファイルを取得
+      
+      var c_time = [
+        {
+          name: 1,
+          start_h: 9,
+          start_m: 20,
+          end_h: 11,
+          end_m: 0
+        },
+        {
+          name: 2,
+          start_h: 11,
+          start_m: 10,
+          end_h: 12,
+          end_m: 50
+        },
+        {
+          name: 3,
+          start: 13,
+          start_m: 40,
+          end_h: 15,
+          end_m: 20
+        },
+        {
+          name: 4,
+          start_h: 15,
+          start_m: 30,
+          end_h: 17,
+          end_m: 10
+        },
+        {
+          name: 5,
+          start_h: 17,
+          start_m: 20,
+          end_h: 19,
+          end_m: 0
+        },
+        {
+          name: 0,
+          start_h: 0,
+          start_m: 0,
+          end_h: 7,
+          end_m: 0
+        }
+
+      ]
+      var zero_room = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]//ここもzeros関数を使って教室の数から出したい
+      let currentM = currentTime*60+currentTime_M
+      for(var i=0;i < 6;i++){
+        if(currentM >= (c_time[i]['start_h']*60+c_time[i]['start_m']) && (currentM <= c_time[i]['end_h']*60 + c_time[i]['end_m'])){
+          var rec = c_time[i]['name']
+        }
+      }
+      T = currentTime_M % 25 
+      Days = parseInt(T/5)
+      Class_time = T % 5
+      for(i=0;i < 197;i++){//今は手で数えているがlen等を用いてエクセルを用いて数えたい
+          //if(csvArray[i][2] == 2 && csvArray[i][1] == currentDay){//
+          if(csvArray[i][2] == Class_time+1 && csvArray[i][1] == Days+1){
+            var tmp = csvArray[i][7]
+            zero_room[tmp] = 1
+          }
+      }
+      let YOU = ["月","火","水","木","金"]
+      console.log(YOU[Days])
+      console.log(Class_time+1)
+      console.log(currentTime)
+      console.log(currentTime_M )
+      console.log(zero_room)
+      
+      //曜日>>時間>>使用したい教室データ..(321, 325)>>for{if{}}で使いたいインスタンス使用する。それ以外の教室インスタンスは白のオーバーレイを使用
+
+      // 教室ごとに増やさなければいけない
+      if (zero_room[0] == 1) {
+      overlay3111.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3111.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[1] == 1) {
+      overlay3112.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3112.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[2] == 1) {
+      overlay3120.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3120.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[3] == 1) {
+      overlay3130.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3130.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[4] == 1) {
+      overlay3140.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3140.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[5] == 1) {
+      overlay3150.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3150.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[6] == 1) {
+      overlay3164.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3164.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[7] == 1) {
+      overlay3210.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3210.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[8] == 1) {
+      overlay3220.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3220.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[9] == 1) {
+      overlay3230.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3230.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[10] == 1) {
+      overlay3240.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3240.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[11] == 1) {
+      overlay3250.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3250.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[12] == 1) {
+      overlay3311.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3311.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[13] == 1) {
+      overlay3320.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3320.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[14] == 1) {
+      overlay3330.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3330.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[15] == 1) {
+      overlay3340.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3340.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[16] == 1) {
+      overlay3350.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3350.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+      if (zero_room[17] == 1) {
+      overlay3364.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+      } else {;
+      overlay3364.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+
+    }
+  
+
+
+    // 一定の間隔で色変化を更新　できれば加速版を作りたい
+    setInterval(changeColor, 6000); // 60秒ごとに更新
+  </script>
+</body>
+</html>
