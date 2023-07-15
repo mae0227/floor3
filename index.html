@@ -3,7 +3,7 @@
 <html>
 <head>
 
-  <title>changg</title>
+  <title>3</title>
   <style>
     #image-container {
       display: inline-block;
@@ -174,6 +174,16 @@
         mix-blend-mode: multiply;
         }
 
+        #schedule-container {
+        position: absolute;
+        top: 20px;
+        left: 800px;
+        width: 400px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        }
+
 
 
     /*数十個のoverlayを作成する。もしかしたらoverlayの上限があるかもしれない
@@ -187,26 +197,29 @@
   <div id="image-container">
     <img id="image" src="room.png">
 
-    div.txt
-    <div id="overlay3111"></div>
-    <div id="overlay3112"></div>
-    <div id="overlay3120"></div>
-    <div id="overlay3130"></div>
-    <div id="overlay3140"></div>
-    <div id="overlay3150"></div>
-    <div id="overlay3164"></div>
-    <div id="overlay3210"></div>
-    <div id="overlay3220"></div>
-    <div id="overlay3230"></div>
-    <div id="overlay3240"></div>
-    <div id="overlay3250"></div>
-    <div id="overlay3311"></div>
-    <div id="overlay3320"></div>
-    <div id="overlay3330"></div>
-    <div id="overlay3340"></div>
-    <div id="overlay3350"></div>
-    <div id="overlay3364"></div>
+    <div id="room3"></div>
+      <div id="overlay3111"></div>
+      <div id="overlay3112"></div>
+      <div id="overlay3120"></div>
+      <div id="overlay3130"></div>
+      <div id="overlay3140"></div>
+      <div id="overlay3150"></div>
+      <div id="overlay3164"></div>
+      <div id="overlay3210"></div>
+      <div id="overlay3220"></div>
+      <div id="overlay3230"></div>
+      <div id="overlay3240"></div>
+      <div id="overlay3250"></div>
+      <div id="overlay3311"></div>
+      <div id="overlay3320"></div>
+      <div id="overlay3330"></div>
+      <div id="overlay3340"></div>
+      <div id="overlay3350"></div>
+      <div id="overlay3364"></div>
+    </div>
   </div>
+
+  <div id="schedule-container"></div>
 
 
   <script>
@@ -238,6 +251,174 @@
           csvArray.push(cells);
         }
       }
+
+      function displaySchedule(classroom) {
+      var scheduleContainer = document.getElementById("schedule-container");
+      scheduleContainer.innerHTML = ""; // 内容をクリア
+
+      var scheduleInfo = [];
+
+      for (var i = 1; i <= 5; i++) {
+        for (var j = 0; j < csvArray.length; j++) {
+          var day = parseInt(csvArray[j][1]);
+          var classTime = parseInt(csvArray[j][2]);
+          var classroomNum = parseInt(csvArray[j][7]);
+
+          if (day == Days + 1 && classTime == i && classroomNum == classroom) {
+            scheduleInfo.push(csvArray[j]);
+          }
+        }
+      }
+
+	if (scheduleInfo.length === 0) {
+    	var noScheduleMessage = document.createElement("p");
+    	noScheduleMessage.textContent = "本日使用予定の授業はありません";
+    	scheduleContainer.appendChild(noScheduleMessage);
+    	return;
+  	}
+      var scheduleTable = document.createElement("table");
+      scheduleTable.classList.add("schedule-table");
+
+      var tableHeader = document.createElement("tr");
+
+      var tableHeaderTime = document.createElement("th");
+      tableHeaderTime.textContent = "時限";
+      tableHeader.appendChild(tableHeaderTime);
+
+      var tableHeaderSubject = document.createElement("th");
+      tableHeaderSubject.textContent = "科目";
+      tableHeader.appendChild(tableHeaderSubject);
+
+      scheduleTable.appendChild(tableHeader);
+
+      for (var k = 0; k < scheduleInfo.length; k++) {
+        var scheduleRow = document.createElement("tr");
+
+        var timeCell = document.createElement("td");
+        timeCell.textContent = scheduleInfo[k][2];
+        scheduleRow.appendChild(timeCell);
+
+        var subjectCell = document.createElement("td");
+        subjectCell.textContent = scheduleInfo[k][0];
+        scheduleRow.appendChild(subjectCell);
+
+        scheduleTable.appendChild(scheduleRow);
+      }
+
+      scheduleContainer.appendChild(scheduleTable);
+    }
+
+    function addClickListeners() {
+    	var overlay3111 = document.getElementById("overlay3111");
+    	var overlay3112 = document.getElementById("overlay3112");
+    	var overlay3120 = document.getElementById("overlay3120");
+    	var overlay3130 = document.getElementById("overlay3130");
+    	var overlay3140 = document.getElementById("overlay3140");
+    	var overlay3150 = document.getElementById("overlay3150");
+    	var overlay3164 = document.getElementById("overlay3164");
+    	var overlay3210 = document.getElementById("overlay3210");
+    	var overlay3220 = document.getElementById("overlay3220");
+    	var overlay3230 = document.getElementById("overlay3230");
+    	var overlay3240 = document.getElementById("overlay3240");
+    	var overlay3250 = document.getElementById("overlay3250");
+      var overlay3311 = document.getElementById("overlay3311");
+    	var overlay3320 = document.getElementById("overlay3320");
+    	var overlay3330 = document.getElementById("overlay3330");
+    	var overlay3340 = document.getElementById("overlay3340");
+    	var overlay3350 = document.getElementById("overlay3350");
+    	var overlay3364 = document.getElementById("overlay3364");
+      //
+      overlay3111.addEventListener("click", function() {
+        // オーバーレイ212がクリックされたときの処理
+		    displaySchedule(0);
+      });
+
+	    overlay3112.addEventListener("click", function() {
+        // オーバーレイ211がクリックされたときの処理
+		    displaySchedule(1);
+      });
+
+	    overlay3120.addEventListener("click", function() {
+        // オーバーレイ210がクリックされたときの処理
+		    displaySchedule(2);
+      });
+
+	    overlay3130.addEventListener("click", function() {
+        // オーバーレイ209がクリックされたときの処理
+		    displaySchedule(3);
+      });
+
+	    overlay3140.addEventListener("click", function() {
+        // オーバーレイ208がクリックされたときの処理
+		  displaySchedule(4);
+      });
+
+  	  overlay3150.addEventListener("click", function() {
+        // オーバーレイ207がクリックされたときの処理
+	  	displaySchedule(5);
+      });
+
+	    overlay3164.addEventListener("click", function() {
+        // オーバーレイ206がクリックされたときの処理
+		  displaySchedule(6);
+      });
+
+	    overlay3210.addEventListener("click", function() {
+        // オーバーレイ204がクリックされたときの処理
+		  displaySchedule(7);
+      });
+
+	    overlay3220.addEventListener("click", function() {
+        // オーバーレイ203がクリックされたときの処理
+		  displaySchedule(8);
+      });
+
+	    overlay3230.addEventListener("click", function() {
+        // オーバーレイ201がクリックされたときの処理
+		  displaySchedule(9);
+      });
+
+	    overlay3240.addEventListener("click", function() {
+        // オーバーレイ117がクリックされたときの処理
+		  displaySchedule(10);
+      });
+
+	    overlay3250.addEventListener("click", function() {
+        // オーバーレイ213がクリックされたときの処理
+		  displaySchedule(11);
+      });
+
+      overlay3311.addEventListener("click", function() {
+        // オーバーレイ206がクリックされたときの処理
+		  displaySchedule(12);
+      });
+
+	    overlay3320.addEventListener("click", function() {
+        // オーバーレイ204がクリックされたときの処理
+		  displaySchedule(13);
+      });
+
+	    overlay3330.addEventListener("click", function() {
+        // オーバーレイ203がクリックされたときの処理
+		  displaySchedule(14);
+      });
+
+	    overlay3340.addEventListener("click", function() {
+        // オーバーレイ201がクリックされたときの処理
+		  displaySchedule(15);
+      });
+
+	    overlay3350.addEventListener("click", function() {
+        // オーバーレイ117がクリックされたときの処理
+		  displaySchedule(16);
+      });
+
+	    overlay3364.addEventListener("click", function() {
+        // オーバーレイ213がクリックされたときの処理
+		  displaySchedule(17);
+      });
+	}
+
       // コンソールに配列を出力
     function changeColor() {
       //ここも必要数に応じて増やさなければいけない
@@ -434,9 +615,14 @@
     }
   
 
+    // 初期表示
+	 function initialize() {
+      changeColor();
+      addClickListeners();
+    }
 
     // 一定の間隔で色変化を更新　できれば加速版を作りたい
-    setInterval(changeColor, 6000); // 60秒ごとに更新
+    setInterval(initialize, 6000); // 60秒ごとに更新
   </script>
 </body>
 </html>
